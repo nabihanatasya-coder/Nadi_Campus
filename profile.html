@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | NadiCampus</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="sidebar-logo">
+                <img
+                    src="image/nadicampus-logo.jpg"
+                    alt="NadiCampus Logo"
+                    class="sidebar-logo-img">
+            </div>
+            <div class="sidebar-brand-text">
+                <h2>NadiCampus</h2>
+                <span>Student Management System</span>
+            </div>
+            <button class="sidebar-close" id="closeSidebar"
+                    type="button" aria-label="Close navigation">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-menu">
+            <p class="menu-heading">MAIN MENU</p>
+
+            <a href="dashboard.html" class="sidebar-link">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html" class="sidebar-link">
+                <i class="bi bi-people"></i>
+                <span>Students</span>
+            </a>
+
+            <a href="courses.html" class="sidebar-link">
+                <i class="bi bi-journal-bookmark"></i>
+                <span>Courses</span>
+            </a>
+
+            <a href="performance.html" class="sidebar-link">
+                <i class="bi bi-bar-chart-line"></i>
+                <span>Academic Performance</span>
+            </a>
+
+            <p class="menu-heading secondary-heading">PREFERENCES</p>
+
+            <a href="profile.html" class="sidebar-link active">
+                <i class="bi bi-person-circle"></i>
+                <span>My Profile</span>
+            </a>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-help">
+                <div class="help-icon">
+                    <i class="bi bi-info-circle"></i>
+                </div>
+                <div>
+                    <h4>Need Help?</h4>
+                    <p>Manage your academic records easily.</p>
+                </div>
+            </div>
+
+            <button class="sidebar-logout" type="button"
+                    onclick="logout()">
+                <i class="bi bi-box-arrow-left"></i>
+                <span>Logout</span>
+            </button>
+
+            <div class="sidebar-copyright">
+                NadiCampus &copy; 2026
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle"
+                        type="button" aria-label="Open navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div class="breadcrumb-area">
+                    <span class="breadcrumb-parent">Main Menu</span>
+                    <i class="bi bi-chevron-right"></i>
+                    <span class="breadcrumb-current">My Profile</span>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-date">
+                    <i class="bi bi-calendar3"></i>
+                    <span id="currentDate"></span>
+                </div>
+
+                <div class="topbar-divider"></div>
+
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <div class="admin-info">
+                        <strong id="adminName">System Administrator</strong>
+                        <span id="adminRole">Administrator</span>
+                    </div>
+
+                    <i class="bi bi-chevron-down profile-arrow"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+
+            <!-- PAGE HEADING -->
+            <section class="welcome-section">
+                <div>
+                    <span class="welcome-label">ACCOUNT SETTINGS</span>
+                    <h1>My Profile</h1>
+                    <p class="welcome-description">
+                        View and manage your administrator profile information.
+                    </p>
+                </div>
+            </section>
+
+            <!-- PROFILE OVERVIEW -->
+            <section class="dashboard-panel profile-overview">
+                <div class="profile-large-avatar" id="profileInitials">
+                    SA
+                </div>
+
+                <div class="profile-overview-info">
+                    <h2 id="profileDisplayName">System Administrator</h2>
+                    <p id="profileDisplayEmail">No email added</p>
+                    <span class="profile-role-badge">
+                        <i class="bi bi-shield-check"></i>
+                        Administrator
+                    </span>
+                </div>
+            </section>
+
+            <!-- PROFILE FORM -->
+            <section class="dashboard-panel profile-form-panel">
+
+                <div class="student-table-heading">
+                    <div>
+                        <h2>Personal Information</h2>
+                        <p>Update your administrator account details</p>
+                    </div>
+                    <i class="bi bi-person-gear profile-heading-icon"></i>
+                </div>
+
+                <form id="profileForm">
+
+                    <div class="student-form-grid">
+
+                        <div class="form-field">
+                            <label for="profileFullName">Full Name</label>
+                            <input
+                                type="text"
+                                id="profileFullName"
+                                maxlength="80"
+                                required
+                                placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="profileEmail">Email Address (Optional)</label>
+                            <input
+                                type="email"
+                                id="profileEmail"
+                                maxlength="120"
+                                placeholder="admin@example.com">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="profileUsername">Username</label>
+                            <input
+                                type="text"
+                                id="profileUsername"
+                                readonly>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="profileRole">Account Role</label>
+                            <input
+                                type="text"
+                                id="profileRole"
+                                readonly>
+                        </div>
+
+                    </div>
+
+                    <p class="profile-form-note">
+                        <i class="bi bi-info-circle"></i>
+                        Username and account role cannot be edited.
+                    </p>
+
+                    <div id="profileMessage"
+                         class="profile-message"
+                         role="status"
+                         aria-live="polite"></div>
+
+                    <div class="profile-form-actions">
+                        <button type="button"
+                                class="secondary-action-btn"
+                                id="resetProfileBtn">
+                            Reset Changes
+                        </button>
+
+                        <button type="submit"
+                                class="primary-action-btn">
+                            <i class="bi bi-check-lg"></i>
+                            Save Profile
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+            <footer class="dashboard-footer">
+                <p>
+                    &copy; 2026 <strong>NadiCampus</strong>.
+                    Student Management System.
+                </p>
+            </footer>
+
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/profile-dropdown.js"></script>
+    
+</body>
+</html>
